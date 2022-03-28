@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "691525846021",
+    "project_id": "wusla-food",
+    "storage_bucket": "wusla-food.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691525846021:android:43e4dee516cdfe592c086c",
+        "android_client_info": {
+          "package_name": "com.Dev3mar.wusla_food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691525846021-65vd6ni94opcg2i2vbkn8vevp0h04rsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWSaeir4_NGGGF1DAH62dEY9rrJpPeIYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691525846021-65vd6ni94opcg2i2vbkn8vevp0h04rsv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
