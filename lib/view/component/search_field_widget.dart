@@ -1,4 +1,3 @@
-import 'package:atyap_nafas/controllers/providers/app_provider.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

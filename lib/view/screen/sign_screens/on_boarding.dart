@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/view/component/button.dart';
+import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
 import '../../component/on_boarding_wedgit.dart';
 
@@ -39,7 +40,7 @@ class OnBoarding extends StatelessWidget {
                 color: Colors.green,
                 label: 'Next',
                 onTap: () {
-                  RouterClass.routerClass.pushWidgetReplacement(LoginScreen());
+                  RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
                 },
               ),
             )

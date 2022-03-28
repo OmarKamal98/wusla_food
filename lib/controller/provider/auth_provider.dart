@@ -1,9 +1,11 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/data/firebase/auth_helper.dart';
 import 'package:wusla_food/data/firebase/firestore_helper.dart';
 import 'package:wusla_food/modle/userfirebase.dart';
+import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
@@ -76,13 +78,17 @@ class AuthProvider extends ChangeNotifier {
         await getUserFromFirebase();
       }
       if (loggedUser != null) {
-        // RouterClass.routerClass.pushWidgetReplacement(HomeScreen());
+        RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
         clear();
+        notifyListeners();
       } else {
+        notifyListeners();
         return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('خطأ في البريد أو كلمة المرور'),
           backgroundColor: Colors.red,
+
         ));
+
       }
     } on Exception catch (e) {
       return ScaffoldMessenger.of(context).showSnackBar(SnackBar(

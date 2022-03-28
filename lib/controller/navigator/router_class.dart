@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:wusla_food/view/screen/navigate_screen/filter_screen.dart';
+import 'package:wusla_food/view/screen/navigate_screen/home_screen.dart';
+import 'package:wusla_food/view/screen/sign_screens/on_boarding.dart';
 
 class RouterClass {
   RouterClass._();
@@ -28,8 +31,8 @@ class RouterClass {
   }
 
   Map<String, Widget Function(BuildContext)> map = {
-    // 'splash': (context) => Splash(),
-    //  'login': (context) => LoginScreen(),
-    // 'signup': (context) => SignUp(),
+    'screen0': (context) =>  OnBoarding(),
+    'screen1': (context) => const HomeScreen(),
+    'screen2': (context) => const FilterScreen(),
   };
 }

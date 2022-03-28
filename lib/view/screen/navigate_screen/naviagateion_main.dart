@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:wusla_food/view/screen/check_out.dart';
+import 'package:wusla_food/view/screen/navigate_screen/home_screen.dart';
+import 'package:wusla_food/view/screen/oreder_list.dart';
 
 class NavigationMain extends StatelessWidget {
   PersistentTabController _controller =
@@ -64,16 +67,11 @@ class NavigationMain extends StatelessWidget {
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
-      PersistentBottomNavBarItem(
-        icon: Icon(Icons.account_box_outlined),
-        title: ('4'),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+
     ];
   }
 
   List<Widget> _buildScreens() {
-    return [];
+    return [HomeScreen(),Checkout(),EmptyCart()];
   }
 }
