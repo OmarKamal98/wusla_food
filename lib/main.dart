@@ -6,6 +6,7 @@ import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/controller/provider/app_provider.dart';
 import 'package:wusla_food/controller/provider/auth_provider.dart';
 import 'package:wusla_food/view/screen/check_out.dart';
+import 'package:wusla_food/view/screen/sign_screens/map.dart';
 import 'package:wusla_food/view/screen/sign_screens/on_boarding.dart';
 
 void main() async {
@@ -13,15 +14,17 @@ void main() async {
   await Firebase.initializeApp();
 
   await EasyLocalization.ensureInitialized();
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
-   // ChangeNotifierProvider<AppProvider>(create: (_) => AppProvider()),
-  ], child:   EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ar')],
-      path: 'assets/translations',
-      // <-- change the path of the translation files
-      fallbackLocale: const Locale('en'),
-      child: const MyApp())));
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
+        // ChangeNotifierProvider<AppProvider>(create: (_) => AppProvider()),
+      ],
+      child: EasyLocalization(
+          supportedLocales: const [Locale('en'), Locale('ar')],
+          path: 'assets/translations',
+          // <-- change the path of the translation files
+          fallbackLocale: const Locale('en'),
+          child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,14 +36,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: RouterClass.routerClass.navKey,
-
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-    home: OnBoarding(),
+      home: GoogleMapsScreen(),
     );
   }
 }
