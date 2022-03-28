@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/controller/provider/app_provider.dart';
 import 'package:wusla_food/controller/provider/auth_provider.dart';
+import 'package:wusla_food/view/screen/chats/main_page.dart';
 import 'package:wusla_food/view/screen/check_out.dart';
 import 'package:wusla_food/view/screen/sign_screens/map.dart';
 import 'package:wusla_food/view/screen/sign_screens/on_boarding.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: GoogleMapsScreen(),
+      home: OnBoarding(),
     );
   }
 }

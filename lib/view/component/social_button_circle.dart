@@ -13,12 +13,12 @@ class SocilButton extends StatelessWidget {
         ontap;
       },
       child: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(25.0),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
               image: AssetImage(imageUrl),
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
             )),
       ), //
     );

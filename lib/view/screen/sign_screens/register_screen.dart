@@ -36,7 +36,18 @@ class SignUp extends StatelessWidget {
             child: ListView(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 66.h, left: 49.w),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 30.h, horizontal: 100.w),
+                  child: Text(
+                    'Create Account',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22.sp,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 30.h),
                   child: Text(
                     'Sign In',
                     style: TextStyle(
@@ -176,6 +187,13 @@ class SignUp extends StatelessWidget {
                       if (regFormkey.currentState!.validate() &&
                           provider.checkRegister) {
                         provider.register(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Register Success'),
+                            backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        );
                         provider.clear();
                       } else if (regFormkey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -248,8 +266,9 @@ class SignUp extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 47.h, left: 88.w),
+                  padding: EdgeInsets.only(top: 40.h),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'have an account ?',

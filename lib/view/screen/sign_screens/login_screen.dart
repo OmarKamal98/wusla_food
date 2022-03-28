@@ -119,12 +119,11 @@ class LoginScreen extends StatelessWidget {
                       if (logFormkey.currentState!.validate()) {
                         provider.login(context);
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('Error Input'),
-                            backgroundColor: Colors.red,
-                          ),
-                        );
+                        return ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('خطأ في البريد أو كلمة المرور'),
+                          backgroundColor: Colors.red,
+                        ));
                       }
                     },
                     color: const Color(0xFF22A45D),

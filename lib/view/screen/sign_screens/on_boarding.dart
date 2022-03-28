@@ -4,6 +4,7 @@ import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/view/component/button.dart';
 import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
+import 'package:wusla_food/view/screen/sign_screens/register_screen.dart';
 import '../../component/on_boarding_wedgit.dart';
 
 class OnBoarding extends StatelessWidget {
@@ -40,7 +41,7 @@ class OnBoarding extends StatelessWidget {
                 color: Colors.green,
                 label: 'Next',
                 onTap: () {
-                  RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
+                  RouterClass.routerClass.pushWidgetReplacement(SignUp());
                 },
               ),
             )

@@ -1,17 +1,19 @@
 import 'dart:developer';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/data/firebase/auth_helper.dart';
 import 'package:wusla_food/data/firebase/firestore_helper.dart';
+import 'package:wusla_food/modle/chat.dart';
+import 'package:wusla_food/modle/message.dart';
 import 'package:wusla_food/modle/userfirebase.dart';
 import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
+import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
-    // getAllAsset();
-    // // getUserFromFirebase();
-    // runFilter(' ');
+    getUsers();
   }
   //controller sign
   TextEditingController loginEmailController = TextEditingController();
@@ -58,7 +60,7 @@ class AuthProvider extends ChangeNotifier {
       await FirestoreHelper.firestoreHelper.createUser(userApp);
       loggedUser = userApp;
       // getAllAsset();
-      // RouterClass.routerClass.pushWidgetReplacement(HomeScreen());
+      RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
       clear();
       log('تم التسجيل بنجاح ');
     } on Exception catch (e) {
@@ -86,9 +88,7 @@ class AuthProvider extends ChangeNotifier {
         return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('خطأ في البريد أو كلمة المرور'),
           backgroundColor: Colors.red,
-
         ));
-
       }
     } on Exception catch (e) {
       return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -130,12 +130,12 @@ class AuthProvider extends ChangeNotifier {
     loggedUser = await FirestoreHelper.firestoreHelper.getUserFromFs(userId);
     notifyListeners();
   }
-  //
-  // logOut() async {
-  //   loggedUser = null;
-  //   await AuthHelper.authHelper.logout();
-  //   RouterClass.routerClass.pushWidgetReplacement(LoginScreen());
-  // }
+
+  logOut() async {
+    loggedUser = null;
+    await AuthHelper.authHelper.logout();
+    RouterClass.routerClass.pushWidgetReplacement(LoginScreen());
+  }
 
   forgetPassword(String email) async {
     AuthHelper.authHelper.forgetPassword(email);
@@ -156,51 +156,53 @@ class AuthProvider extends ChangeNotifier {
     phoneController.clear();
     notifyListeners();
   }
+////////// chat
 
-  // Asset1? assetselect;
-  // /////////search
-  // search(String assetCode) {
-  //   for (int i = 0; i < allAssetList.length; i++) {
-  //     if (allAssetList[i].assetCode!.contains(assetCode)) {
-  //       assetselect = allAssetList[i];
-  //       return;
-  //     } else {
-  //       assetselect = null;
-  //     }
-  //   }
-  //   //
-  //   // assetselect = allAssetList
-  //   //     .where((element) => element.assetCode!.contains(assetCode));
-  //   notifyListeners();
-  // }
-  //
-  // List<Asset1> results = [];
-  // void runFilter(String enteredKeyword) {
-  //   if (enteredKeyword.isEmpty) {
-  //     // if the search field is empty or only contains white-space, we'll display all users
-  //     results = allAssetList;
-  //   } else {
-  //     results = allAssetList
-  //         .where((asset) => asset.assetName!
-  //             .toLowerCase()
-  //             .contains(enteredKeyword.toLowerCase()))
-  //         .toList();
-  //     // we use the toLowerCase() method to make it case-insensitive
-  //   }
-  //
-  //   // Refresh the UI
-  //   notifyListeners();
-  // }
-  //
-  // chekcInterNetConnect() async {
-  //   try {
-  //     final result = await InternetAddress.lookup('example.com')
-  //         .timeout(Duration(seconds: 3));
-  //     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-  //       isConnectInterNet = false;
-  //     }
-  //   } on SocketException catch (_) {
-  //     isConnectInterNet = true;
-  //   }
-  // }
+  List<Chat>? allMyChats;
+  List<UserApp>? users;
+  getUsers() async {
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> queries =
+        await FirestoreHelper.firestoreHelper.getUsersFromFirestore();
+    List<UserApp>? userList =
+        queries.map((e) => UserApp.fromMap(e.data())).toList();
+    String myId = FirebaseAuth.instance.currentUser!.uid;
+
+    userList.where((element) => element.id == myId).first;
+    userList.removeWhere((element) => element.id == myId);
+    users = userList;
+    notifyListeners();
+  }
+
+  getChats() async {
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> list =
+        await FirestoreHelper.firestoreHelper.getChats();
+    List<Chat> chats = list.map((e) {
+      String chatId = e.id;
+      Map<String, dynamic> map = e.data();
+      map['chatId'] = chatId;
+      return Chat.fromJson(map);
+    }).toList();
+    allMyChats = chats;
+    notifyListeners();
+  }
+
+  sendMessage(Message message, [UserApp? otherUser]) async {
+    String? chatId = message.chatId;
+    bool x =
+        await FirestoreHelper.firestoreHelper.checkCollectionExists(chatId!);
+    if (otherUser == null) {
+      FirestoreHelper.firestoreHelper.sendMessage(message);
+    } else {
+      if (!x) {
+        await createChat(chatId, otherUser);
+        FirestoreHelper.firestoreHelper.sendMessage(message);
+      } else {
+        FirestoreHelper.firestoreHelper.sendMessage(message);
+      }
+    }
+  }
+
+  createChat(String chatId, UserApp otherUser) async {
+    FirestoreHelper.firestoreHelper.createChat(chatId, loggedUser!, otherUser);
+  }
 }
