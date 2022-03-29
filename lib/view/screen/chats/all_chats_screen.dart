@@ -16,7 +16,7 @@ class AllChatsScreen extends StatelessWidget {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : provider.allMyChats!.isEmpty
+            : provider.allMyChats!.length == 0
                 ? Center(
                     child: Text('No Chats Found'),
                   )
@@ -25,14 +25,13 @@ class AllChatsScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ListTile(
                         onTap: () {
-                          RouterClass.routerClass
-                              .pushWidget(
-                                  AllChatMessagesScreen(
-                                      chat: provider.allMyChats![index]));
+                          RouterClass.routerClass.pushWidget(
+                            AllChatMessagesScreen(
+                                chat: provider.allMyChats![index]),
+                          );
                         },
                         leading: CircleAvatar(
-
-                          radius: 80.r,
+                          radius: 30,
                         ),
                         title: Text(provider.allMyChats![index].membersNames!
                             .where((element) =>

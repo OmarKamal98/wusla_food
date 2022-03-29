@@ -187,13 +187,7 @@ class SignUp extends StatelessWidget {
                       if (regFormkey.currentState!.validate() &&
                           provider.checkRegister) {
                         provider.register(context);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Register Success'),
-                            backgroundColor: Colors.red,
-                            behavior: SnackBarBehavior.floating,
-                          ),
-                        );
+
                         provider.clear();
                       } else if (regFormkey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(

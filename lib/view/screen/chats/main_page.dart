@@ -15,7 +15,7 @@ class MainPage extends StatelessWidget {
       child: Consumer<AuthProvider>(builder: (context, provider, x) {
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.deepOrange,
+            backgroundColor: Color(0xFF22A45D),
             title: Text(
               'Whisper Chat',
               style: GoogleFonts.pacifico(

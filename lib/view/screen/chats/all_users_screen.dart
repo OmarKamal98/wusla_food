@@ -25,10 +25,10 @@ class AllUsersScreen extends StatelessWidget {
                       ));
                     },
                     leading: CircleAvatar(
-                      radius: 80.r,
+                      radius: 30,
                     ),
                     title: Text(provider.users![index].name!),
-                    subtitle: Text(provider.users![index].email!),
+                    subtitle: Text(provider.users![index].phoneNumber!),
                   );
                 }),
       );

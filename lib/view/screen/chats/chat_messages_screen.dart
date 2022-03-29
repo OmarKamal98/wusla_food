@@ -38,8 +38,9 @@ class AllChatMessagesScreen extends StatelessWidget {
     return Consumer<AuthProvider>(builder: (context, provider, x) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepOrange,
-          title: Text(otherUser!.name!),
+          backgroundColor: Color(0xFF22A45D),
+          title: Text(
+              otherUser == null ? chat!.membersNames![1] : otherUser!.name),
           actions: [
             IconButton(onPressed: () {}, icon: Icon(Icons.call_outlined)),
             IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined))
@@ -73,18 +74,15 @@ class AllChatMessagesScreen extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      const CircleAvatar(
-                                        backgroundColor: Colors.transparent,
-                                      ),
                                       SizedBox(
-                                        width: 10.w,
+                                        width: 5,
                                       ),
                                       ChatBubble(
                                         backGroundColor: snapshots[index]
                                                     ['senderId'] ==
                                                 provider.loggedUser!.id
-                                            ? Colors.deepOrange
-                                            : Colors.grey[500],
+                                            ? Colors.green[300]
+                                            : Colors.green[900],
                                         clipper: ChatBubbleClipper5(
                                             type: snapshots[index]
                                                         ['senderId'] ==
@@ -109,12 +107,13 @@ class AllChatMessagesScreen extends StatelessWidget {
                 )),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Container(
-                        height: 130.h,
+                        height: 50,
                         child: TextFormField(
                           textAlignVertical: TextAlignVertical.bottom,
                           controller: textEditingController,
@@ -123,12 +122,12 @@ class AllChatMessagesScreen extends StatelessWidget {
                             focusColor: Colors.amberAccent,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.red,
+                                  color: Colors.green,
                                 ),
                                 borderRadius: BorderRadius.circular(50)),
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.red,
+                                  color: Colors.green,
                                   width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(50)),
@@ -137,8 +136,8 @@ class AllChatMessagesScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 10,
+                    const SizedBox(
+                      width: 5,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -156,13 +155,13 @@ class AllChatMessagesScreen extends StatelessWidget {
                         textEditingController.clear();
                       },
                       child: Container(
-                          height: 130.h,
-                          width: 170.w,
+                          height: 50,
+                          width: 90,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              color: Colors.deepOrange,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Icon(
+                              color: Color(0xFF22A45D),
+                              borderRadius: BorderRadius.circular(40)),
+                          child: const Icon(
                             Icons.send,
                             color: Colors.white,
                           )),

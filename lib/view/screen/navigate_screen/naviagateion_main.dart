@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:wusla_food/view/screen/chats/main_page.dart';
 import 'package:wusla_food/view/screen/check_out.dart';
 import 'package:wusla_food/view/screen/navigate_screen/home_screen.dart';
 import 'package:wusla_food/view/screen/oreder_list.dart';
@@ -67,11 +68,10 @@ class NavigationMain extends StatelessWidget {
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
-
     ];
   }
 
   List<Widget> _buildScreens() {
-    return [HomeScreen(),Checkout(),EmptyCart()];
+    return [HomeScreen(), Checkout(), MainPage()];
   }
 }

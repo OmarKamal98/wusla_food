@@ -13,7 +13,7 @@ import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
-    getUsers();
+    getUserFromFirebase();
   }
   //controller sign
   TextEditingController loginEmailController = TextEditingController();
@@ -58,9 +58,17 @@ class AuthProvider extends ChangeNotifier {
           .createNewAccount(userApp.email!.trim(), userApp.password!.trim());
       userApp.id = x?.user!.uid;
       await FirestoreHelper.firestoreHelper.createUser(userApp);
+
       loggedUser = userApp;
-      // getAllAsset();
+
       RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Register Success'),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
       clear();
       log('تم التسجيل بنجاح ');
     } on Exception catch (e) {
@@ -78,6 +86,7 @@ class AuthProvider extends ChangeNotifier {
       if (AuthHelper.authHelper.success) {
         // getAllAsset();
         await getUserFromFirebase();
+        getUsers();
       }
       if (loggedUser != null) {
         RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
@@ -170,6 +179,7 @@ class AuthProvider extends ChangeNotifier {
     userList.where((element) => element.id == myId).first;
     userList.removeWhere((element) => element.id == myId);
     users = userList;
+    getChats();
     notifyListeners();
   }
 
