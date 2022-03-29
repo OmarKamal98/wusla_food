@@ -19,7 +19,7 @@ class NavigationMain extends StatelessWidget {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Color(0xFF0E0B1F), // Default is Colors.white.
+      backgroundColor: Colors.white, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -28,7 +28,7 @@ class NavigationMain extends StatelessWidget {
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Color(0xFF0E0B1F),
+        colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -52,26 +52,26 @@ class NavigationMain extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ('1'),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        title: ('Home'),
+        activeColorPrimary: Color(0xFF22A45D),
+        inactiveColorPrimary: CupertinoColors.black,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.explore),
-        title: ('2'),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        icon: Icon(Icons.pause),
+        title: ('الأقسام'),
+        activeColorPrimary: Color(0xFF22A45D),
+        inactiveColorPrimary: CupertinoColors.black,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.queue_music),
-        title: ('3'),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        icon: Icon(Icons.shopping_basket_outlined),
+        title: ('السلة'),
+        activeColorPrimary: Color(0xFF22A45D),
+        inactiveColorPrimary: CupertinoColors.black,
       ),
     ];
   }
 
   List<Widget> _buildScreens() {
-    return [HomeScreen(), Checkout(), MainPage()];
+    return [HomeScreen(), MainPage(), EmptyCart()];
   }
 }

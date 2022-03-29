@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptyCart extends StatelessWidget {
-  bool orderExsist = false;
+  bool orderExsist = true;
 
   EmptyCart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+        BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width,
+            maxHeight: MediaQuery.of(context).size.height),
+        designSize: const Size(375, 812),
+        context: context,
+        minTextAdapt: true,
+        orientation: Orientation.portrait);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('shop order'),
+        backgroundColor: Color(0xFF22A45D),
+        title: const Text('السلة'),
+        centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {},
@@ -21,98 +32,96 @@ class EmptyCart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 50,
+                    SizedBox(
+                      height: 30.h,
                     ),
                     Container(
-                      width: 320,
-                      height: 80,
+                      width: 343.h,
+                      height: 90.h,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.r),
                         boxShadow: const [
                           BoxShadow(
-                            color: Colors.red,
+                            color: Colors.grey,
+                            blurRadius: 2.0,
+                            spreadRadius: 0.0,
                             offset: Offset(
-                              5.0,
-                              5.0,
-                            ),
-                            blurRadius: 1.0,
-                            spreadRadius: 5.0,
-                          ), //BoxShadow
-                          BoxShadow(
-                            color: Colors.white60,
-                            offset: Offset(5.0, 5.0),
-                            blurRadius: 1.0,
-                            spreadRadius: 2.0,
-                          ), //BoxShadow
+                                2.0, 2.0), // shadow direction: bottom right
+                          )
                         ],
                       ),
                       child: Row(
                         children: [
-                          // Image.asset(
-                          //   'assets/images/cart.png',
-                          //   scale: 2,
-                          // ),
-                          const SizedBox(
-                            width: 15,
+                          Image.asset(
+                            'assets/image/cart.png',
+                            scale: 2,
+                          ),
+                          SizedBox(
+                            width: 25.w,
                           ),
                           Column(
-                            children: const [
-                              Text('ستيك لحم '),
-                              Text('20  شيكل '),
+                            children: [
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              const Text('ستيك لحم '),
+                              SizedBox(
+                                height: 7.h,
+                              ),
+                              const Text('20  شيكل '),
                             ],
                           )
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
+                    SizedBox(
+                      height: 15.h,
                     ),
                     Container(
-                      width: 320,
-                      height: 80,
+                      width: 343.h,
+                      height: 90.h,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.r),
                         boxShadow: const [
                           BoxShadow(
-                            color: Colors.red,
+                            color: Colors.grey,
+                            blurRadius: 2.0,
+                            spreadRadius: 0.0,
                             offset: Offset(
-                              5.0,
-                              5.0,
-                            ),
-                            blurRadius: 1.0,
-                            spreadRadius: 5.0,
-                          ), //BoxShadow
-                          BoxShadow(
-                            color: Colors.white60,
-                            offset: Offset(5.0, 5.0),
-                            blurRadius: 1.0,
-                            spreadRadius: 2.0,
-                          ), //BoxShadow
+                                2.0, 2.0), // shadow direction: bottom right
+                          )
                         ],
                       ),
                       child: Row(
                         children: [
-                          // Image.asset(
-                          //   'assets/images/cart.png',
-                          //   scale: 2,
-                          // ),
-                          const SizedBox(
-                            width: 15,
+                          Image.asset(
+                            'assets/image/cart.png',
+                            scale: 2,
+                          ),
+                          SizedBox(
+                            width: 25.w,
                           ),
                           Column(
-                            children: const [
-                              Text('ستيك لحم '),
-                              Text('20  شيكل '),
+                            children: [
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              const Text('ستيك لحم '),
+                              SizedBox(
+                                height: 7.h,
+                              ),
+                              const Text('20  شيكل '),
                             ],
                           )
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
+                    SizedBox(
+                      height: 40.h,
                     ),
                     const Text(
                       'التكلفة ',
@@ -122,55 +131,94 @@ class EmptyCart extends StatelessWidget {
                           color: Colors.grey),
                     ),
                     Row(
-                      children: const [
-                        Text('الاجمالي الجزئي'),
-                        SizedBox(width: 180),
-                        Text('50 شيكل')
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: const [
-                        Text('الاجمالي الجزئي'),
-                        SizedBox(width: 180),
-                        Text('50 شيكل')
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('الاجمالي الجزئي'),
+                        SizedBox(
+                            width: 90.w,
+                            height: 50.h,
+                            child: Text('الاجمالي الجزئي')),
+                        SizedBox(width: 190.w),
+                        SizedBox(
+                            width: 70.w, height: 50.h, child: Text('50 شيكل'))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            width: 90.w, height: 50.h, child: Text('التوصيل')),
+                        SizedBox(width: 190.w),
+                        SizedBox(
+                            width: 70.w, height: 50.h, child: Text('10 شيكل'))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            width: 90.w,
+                            height: 50.h,
+                            child: Text(' كود الخصم')),
                         const SizedBox(width: 180),
-                        ElevatedButton(
-                            onPressed: () {}, child: const Text('إضافة '))
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: 90.w,
+                            height: 35.h,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.transparent,
+                                border: Border.all(
+                                  color: Color(0xFF22A45D),
+                                  width: 1,
+                                )),
+                            child: Text(
+                              'إضافة ',
+                              style: TextStyle(
+                                  color: Color(0xFF22A45D), fontSize: 12.sp),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
                       ],
                     ),
-                    const SizedBox(
-                      height: 15,
+                    SizedBox(
+                      height: 5.h,
                     ),
                     Row(
-                      children: const [
-                        Text('الاجمالي الجزئي'),
-                        SizedBox(width: 180),
-                        Text('50 شيكل')
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            width: 90.w, height: 50.h, child: Text('الخصم')),
+                        SizedBox(width: 190.w),
+                        SizedBox(
+                            width: 70.w, height: 50.h, child: Text('0 شيكل'))
                       ],
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 5,
                     ),
                     Row(
-                      children: const [
-                        Text('الاجمالي الجزئي'),
-                        SizedBox(width: 180),
-                        Text('50 شيكل')
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            width: 90.w,
+                            height: 50.h,
+                            child: Text('الاجمالي ')),
+                        SizedBox(width: 190.w),
+                        SizedBox(
+                            width: 70.w, height: 50.h, child: Text('50 شيكل'))
                       ],
                     ),
-                    const SizedBox(
-                      height: 50,
+                    SizedBox(
+                      height: 30.h,
                     ),
                     InkWell(
                       onTap: () {},
@@ -198,7 +246,7 @@ class EmptyCart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Image.asset('assets/image/cart.png'),
+                    Image.asset('assets/image/cart.png'),
                     const SizedBox(height: 50),
                     const Icon(
                       Icons.cleaning_services,

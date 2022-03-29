@@ -21,7 +21,7 @@ class AllChatsScreen extends StatelessWidget {
                     child: Text('No Chats Found'),
                   )
                 : ListView.builder(
-                    itemCount: provider.allMyChats!.length,
+                    itemCount: provider.allMyChats!.length - 1,
                     itemBuilder: (context, index) {
                       return ListTile(
                         onTap: () {

@@ -183,6 +183,7 @@ class SignUp extends StatelessWidget {
                   child: PrimaryButton(
                     widt: 343.w,
                     hieg: 50.h,
+                    textcolor: Colors.white,
                     onTap: () {
                       if (regFormkey.currentState!.validate() &&
                           provider.checkRegister) {

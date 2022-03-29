@@ -4,12 +4,11 @@ import 'package:wusla_food/controller/navigator/router_class.dart';
 import 'package:wusla_food/view/component/button.dart';
 import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
-import 'package:wusla_food/view/screen/sign_screens/on_boarding1.dart';
 import 'package:wusla_food/view/screen/sign_screens/register_screen.dart';
 import '../../component/on_boarding_wedgit.dart';
 
-class OnBoarding extends StatelessWidget {
-  OnBoarding({
+class OnBoarding2 extends StatelessWidget {
+  OnBoarding2({
     Key? key,
   }) : super(key: key);
   @override
@@ -29,7 +28,7 @@ class OnBoarding extends StatelessWidget {
         child: Column(
           children: [
             OnBoardingWidget(
-              imageUrl: 'assets/image/onbord1.png',
+              imageUrl: 'assets/image/onbord2.jfif',
               titile: 'Welcome ',
               describtion:
                   'describtionuh ijeiojf jhiuerh oiuheiuorh uehru huoiehru hIUERH UKHERNUEIHFUEHF screeemn 1',
@@ -39,11 +38,11 @@ class OnBoarding extends StatelessWidget {
               child: PrimaryButton(
                 hieg: 50.h,
                 widt: 343.w,
-                color: Colors.transparent,
-                textcolor: Color(0xFF22A45D),
-                label: 'Next',
+                color: Colors.green,
+                textcolor: Colors.white,
+                label: 'Skip',
                 onTap: () {
-                  RouterClass.routerClass.pushWidgetReplacement(OnBoarding1());
+                  RouterClass.routerClass.pushWidgetReplacement(SignUp());
                 },
               ),
             )

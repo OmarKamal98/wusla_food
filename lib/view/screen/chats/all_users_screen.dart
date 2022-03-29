@@ -18,6 +18,7 @@ class AllUsersScreen extends StatelessWidget {
             : ListView.builder(
                 itemCount: provider.users?.length,
                 itemBuilder: (context, index) {
+                  provider.getUsers();
                   return ListTile(
                     onTap: () {
                       RouterClass.routerClass.pushWidget(AllChatMessagesScreen(

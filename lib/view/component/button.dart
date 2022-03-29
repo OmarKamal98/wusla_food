@@ -8,11 +8,14 @@ class PrimaryButton extends StatelessWidget {
       required this.widt,
       required this.label,
       required this.onTap,
-      required this.color})
+      required this.color,
+      required this.textcolor
+      })
       : super(key: key);
 
   final String label;
   final Color color;
+  final Color textcolor;
   final Function() onTap;
   double widt;
   double hieg;
@@ -37,7 +40,7 @@ class PrimaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(30), color: color),
         child: Text(
           label,
-          style: TextStyle(color: Colors.white, fontSize: 28.sp),
+          style: TextStyle(color: textcolor, fontSize: 28.sp),
           textAlign: TextAlign.center,
         ),
       ),

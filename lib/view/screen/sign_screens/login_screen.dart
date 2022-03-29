@@ -127,6 +127,7 @@ class LoginScreen extends StatelessWidget {
                       }
                     },
                     color: const Color(0xFF22A45D),
+                    textcolor: Colors.white,
                     label: 'Sign In',
                   ),
                 ),

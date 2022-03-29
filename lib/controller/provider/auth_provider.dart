@@ -13,7 +13,7 @@ import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
-    getUserFromFirebase();
+    getUsers();
   }
   //controller sign
   TextEditingController loginEmailController = TextEditingController();
@@ -84,7 +84,6 @@ class AuthProvider extends ChangeNotifier {
       await AuthHelper.authHelper.signIn(loginEmailController.text.trim(),
           loginPasswordController.text.trim());
       if (AuthHelper.authHelper.success) {
-        // getAllAsset();
         await getUserFromFirebase();
         getUsers();
       }
