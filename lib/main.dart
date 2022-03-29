@@ -20,7 +20,7 @@ void main() async {
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
-        // ChangeNotifierProvider<AppProvider>(create: (_) => AppProvider()),
+        ChangeNotifierProvider<AppProvider>(create: (_) => AppProvider()),
       ],
       child: EasyLocalization(
           supportedLocales: const [Locale('en'), Locale('ar')],

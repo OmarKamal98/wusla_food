@@ -2,10 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:wusla_food/controller/navigator/router_class.dart';
+import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 
 import '../../../controller/provider/app_provider.dart';
 import '../../component/filter_cell_widget.dart';
-
 
 class FilterScreen extends StatelessWidget {
   const FilterScreen({Key? key}) : super(key: key);
@@ -26,10 +27,10 @@ class FilterScreen extends StatelessWidget {
           child: Icon(
             Icons.arrow_back_ios,
             size: 20.sp,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFF22A45D),
         elevation: 0,
         centerTitle: true,
         title: Text(
@@ -52,24 +53,28 @@ class FilterScreen extends StatelessWidget {
                     )),
               ),
               Row(
-                children: const [
-                  FilterCellWidget(filterText: 'الكل '),
-                  FilterCellWidget(filterText: 'مشاوي '),
-                  FilterCellWidget(filterText: 'شوربات '),
+                children: [
+                  FilterCellWidget(
+                    filterText: 'الكل ',
+                    color: Colors.white,
+                  ),
+                  FilterCellWidget(filterText: 'مشاوي ', color: Colors.white),
+                  FilterCellWidget(filterText: 'شوربات ', color: Colors.white),
                 ],
               ),
               Row(
-                children: const [
-                  FilterCellWidget(filterText: 'برجر '),
-                  FilterCellWidget(filterText: 'السلطات  '),
-                  FilterCellWidget(filterText: 'بيتزا '),
+                children: [
+                  FilterCellWidget(filterText: 'برجر ', color: Colors.white),
+                  FilterCellWidget(
+                      filterText: 'السلطات  ', color: Colors.white),
+                  FilterCellWidget(filterText: 'بيتزا ', color: Colors.white),
                 ],
               ),
               Row(
-                children: const [
-                  FilterCellWidget(filterText: 'تايلندي '),
-                  FilterCellWidget(filterText: 'فطور '),
-                  FilterCellWidget(filterText: 'عشاء '),
+                children: [
+                  FilterCellWidget(filterText: 'تايلندي ', color: Colors.white),
+                  FilterCellWidget(filterText: 'فطور ', color: Colors.white),
+                  FilterCellWidget(filterText: 'عشاء ', color: Colors.white),
                 ],
               ),
               Padding(
@@ -83,24 +88,28 @@ class FilterScreen extends StatelessWidget {
                     )),
               ),
               Row(
-                children: const [
-                  FilterCellWidget(filterText: 'الكل '),
-                  FilterCellWidget(filterText: 'النصر '),
-                  FilterCellWidget(filterText: 'تل الهوى  '),
+                children: [
+                  FilterCellWidget(filterText: 'الكل ', color: Colors.white),
+                  FilterCellWidget(filterText: 'النصر ', color: Colors.white),
+                  FilterCellWidget(
+                      filterText: 'تل الهوى  ', color: Colors.white),
                 ],
               ),
               Row(
-                children: const [
-                  FilterCellWidget(filterText: 'الرمال '),
-                  FilterCellWidget(filterText: 'الوسطى  '),
-                  FilterCellWidget(filterText: 'الجامعات '),
+                children: [
+                  FilterCellWidget(filterText: 'الرمال ', color: Colors.white),
+                  FilterCellWidget(filterText: 'الوسطى  ', color: Colors.white),
+                  FilterCellWidget(
+                      filterText: 'الجامعات ', color: Colors.white),
                 ],
               ),
               Row(
-                children: const [
-                  FilterCellWidget(filterText: 'الكرامة '),
-                  FilterCellWidget(filterText: 'المخابرات '),
-                  FilterCellWidget(filterText: 'الشجاعية '),
+                children: [
+                  FilterCellWidget(filterText: 'الكرامة ', color: Colors.white),
+                  FilterCellWidget(
+                      filterText: 'المخابرات ', color: Colors.white),
+                  FilterCellWidget(
+                      filterText: 'الشجاعية ', color: Colors.white),
                 ],
               ),
               Padding(
@@ -163,7 +172,7 @@ class FilterScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height:40.h),
+              SizedBox(height: 40.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 4.h),
                 child: SizedBox(
@@ -221,45 +230,62 @@ class FilterScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 20.h),
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 10.w, vertical: 10.h),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 20.w, vertical: 10.h),
-                        height: 52.h,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF1F1F1),
-                          borderRadius: BorderRadius.circular(15.r),
+                      child: InkWell(
+                        onTap: () {
+                          RouterClass.routerClass
+                              .pushWidgetReplacement(NavigationMain());
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 10.w, vertical: 10.h),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.w, vertical: 10.h),
+                          height: 52.h,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF1F1F1),
+                            borderRadius: BorderRadius.circular(15.r),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'cancel'.tr(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 24.sp,
+                                color: Colors.black.withOpacity(0.54)),
+                          )),
                         ),
-                        child: Center(
-                            child: Text(
-                              'cancel'.tr(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 24.sp,
-                                  color: Colors.black.withOpacity(0.54)),
-                            )),
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                        height: 52.h,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF22A45D),
-                          borderRadius: BorderRadius.circular(15.r),
+                      child: InkWell(
+                        onTap: () {
+                          RouterClass.routerClass
+                              .pushWidgetReplacement(NavigationMain());
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('تم تفعيل الفلترة'),
+                            backgroundColor: Color(0xFF22A45D),
+                          ));
+                        },
+                        child: Container(
+                          height: 52.h,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF22A45D),
+                            borderRadius: BorderRadius.circular(15.r),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'apply'.tr(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 24.sp,
+                                color: Colors.white),
+                          )),
                         ),
-                        child: Center(
-                            child: Text(
-                              'apply'.tr(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 24.sp,
-                                  color: Colors.white),
-                            )),
                       ),
                     ),
                   ],

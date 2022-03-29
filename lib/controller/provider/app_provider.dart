@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../modle/department_model.dart';
 
-
 class AppProvider extends ChangeNotifier {
   TextEditingController searchController = TextEditingController();
   RangeValues priceValues = const RangeValues(0, 200);
@@ -12,8 +11,15 @@ class AppProvider extends ChangeNotifier {
     priceValues = val;
     notifyListeners();
   }
+
   distanceRangeValueFun(val) {
     distanceValues = val;
+    notifyListeners();
+  }
+
+  bool isGreen = false;
+  notifyButtonColor() {
+    isGreen = !isGreen;
     notifyListeners();
   }
 
@@ -21,9 +27,11 @@ class AppProvider extends ChangeNotifier {
 ///////////////////////////////////////////////////
 ////////////////dummy data////////////////////////
 
-  List<DepartmentFood> department=[
-    DepartmentFood(depName: 'مقلوبة فلسطيمية باللحمة', chafeName: 'Omar Abo Maghasib', rate: '4.5', depImage: 'depImage'),
+  List<DepartmentFood> department = [
+    DepartmentFood(
+        depName: 'مقلوبة فلسطيمية باللحمة',
+        chafeName: 'Omar Abo Maghasib',
+        rate: '4.5',
+        depImage: 'depImage'),
   ];
-
-
 }

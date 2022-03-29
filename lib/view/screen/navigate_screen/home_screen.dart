@@ -9,6 +9,8 @@ import 'package:wusla_food/view/component/department_widget.dart';
 import 'package:wusla_food/view/component/meal_perview_widget.dart';
 import 'package:wusla_food/view/component/search_field_widget.dart';
 import 'package:wusla_food/view/screen/chats/main_page.dart';
+import 'package:wusla_food/view/screen/navigate_screen/favorite_screen.dart';
+import 'package:wusla_food/view/screen/navigate_screen/filter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,11 +28,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        leading: InkWell(
+            onTap: () {
+              RouterClass.routerClass.pushWidget(FavoriteScreen());
+            },
+            child: Image.asset('assets/image/favhome.png')),
         elevation: 0,
         title: Text(
           'سفرتنا',
           style: TextStyle(color: Color(0xFF22A45D), fontSize: 24.sp),
         ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
@@ -63,9 +71,14 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: 15.w,
               ),
-              SizedBox(
-                child: SvgPicture.asset('assets/icons/filter2.svg'),
-                // child: Icon(Icons.list),
+              InkWell(
+                onTap: () {
+                  RouterClass.routerClass.pushWidget(FilterScreen());
+                },
+                child: SizedBox(
+                  child: SvgPicture.asset('assets/icons/filter2.svg'),
+                  // child: Icon(Icons.list),
+                ),
               ),
             ],
           ),

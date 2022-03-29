@@ -29,19 +29,30 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    ScreenUtil.init(
+        BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width,
+            maxHeight: MediaQuery.of(context).size.height),
+        designSize: const Size(375, 812),
+        context: context,
+        minTextAdapt: true,
+        orientation: Orientation.portrait);
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            getUserLocation();
-          },
-          child: Icon(Icons.gps_fixed),
+        floatingActionButton: Padding(
+          padding: EdgeInsets.only(bottom: 100.h),
+          child: FloatingActionButton(
+            onPressed: () {
+              getUserLocation();
+            },
+            child: Icon(Icons.gps_fixed),
+          ),
         ),
         appBar: AppBar(
           backgroundColor: Colors.green,
           title: Text('Google Maps'),
           centerTitle: true,
         ),
-        body: Column(
+        body: Stack(
           children: [
             GoogleMap(
               myLocationButtonEnabled: true,
@@ -62,28 +73,33 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                 zoom: 11.5,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: PrimaryButton(
-                color: Color(0xFF22A45D),
-                textcolor: Colors.white,
-                label: 'وصل هنا',
-                widt: 343.w,
-                hieg: 50.h,
-                onTap: () {
-                  if (myLocation != null) {
-                    RouterClass.routerClass
-                        .pushWidgetReplacement(NavigationMain());
-                  } else {
-                    return ScaffoldMessenger.of(context)
-                        .showSnackBar(const SnackBar(
-                      content: Text('يجب تحديد موقعك '),
-                      backgroundColor: Colors.red,
-                    ));
-                  }
-                },
+            Positioned(
+              top: 650.h,
+              right: 0,
+              left: 0,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.w),
+                child: PrimaryButton(
+                  color: Color(0xFF22A45D),
+                  textcolor: Colors.white,
+                  label: 'وصل هنا',
+                  widt: 343.w,
+                  hieg: 50.h,
+                  onTap: () {
+                    if (myLocation != null) {
+                      RouterClass.routerClass
+                          .pushWidgetReplacement(NavigationMain());
+                    } else {
+                      return ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(
+                        content: Text('يجب تحديد موقعك '),
+                        backgroundColor: Colors.red,
+                      ));
+                    }
+                  },
+                ),
               ),
-            ),
+            )
           ],
         ));
   }

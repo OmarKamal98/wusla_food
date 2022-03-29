@@ -8,7 +8,6 @@ import 'package:wusla_food/data/firebase/firestore_helper.dart';
 import 'package:wusla_food/modle/chat.dart';
 import 'package:wusla_food/modle/message.dart';
 import 'package:wusla_food/modle/userfirebase.dart';
-import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
 import 'package:wusla_food/view/screen/sign_screens/map.dart';
 
