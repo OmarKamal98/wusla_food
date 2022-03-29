@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wusla_food/modle/chefmodel.dart';
 
 class ChefWidget extends StatelessWidget {
-  const ChefWidget({Key? key}) : super(key: key);
-
+  ChefWidget({Key? key, required this.chefMod}) : super(key: key);
+  ChefMod? chefMod;
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -35,18 +36,18 @@ class ChefWidget extends StatelessWidget {
           children: [
             Container(
               height: 120.h,
-              width: 177.w,
+              width: 180.w,
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(15.r),
                   topRight: Radius.circular(15.r),
                 ),
               ),
               child: Center(
-                child: Image.asset(
-                  'assets/image/chef.png',
-                  fit: BoxFit.contain,
+                child: Image.network(
+                  // 'assets/image/chef.png',
+                  chefMod!.imageUrl!, fit: BoxFit.contain,
                 ),
               ),
             ),
@@ -56,7 +57,7 @@ class ChefWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'الشيف :أحمد يوسف',
+                    'الشيف :' + chefMod!.name!,
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                   ),
@@ -69,7 +70,7 @@ class ChefWidget extends StatelessWidget {
                         color: Color(0xFFFFC529),
                       ),
                       Text(
-                        '4.5',
+                        chefMod!.rate!,
                         style: TextStyle(
                             fontSize: 12.sp, fontWeight: FontWeight.w600),
                       ),
@@ -79,11 +80,11 @@ class ChefWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20.w),
+              padding: EdgeInsets.only(right: 20.w),
               child: Text(
-                'بيتزا ,هامبرجر,تايلندي',
+                chefMod!.desc!,
                 style: TextStyle(
-                    fontSize: 13.sp,
+                    fontSize: 14.sp,
                     color: Colors.grey.shade500,
                     fontWeight: FontWeight.w600),
               ),

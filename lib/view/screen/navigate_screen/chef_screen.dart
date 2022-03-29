@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wusla_food/modle/chefmodel.dart';
 import 'package:wusla_food/view/component/chef_screen_widget.dart';
 
 class AllChefScreen extends StatelessWidget {
@@ -18,10 +19,11 @@ class AllChefScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'الطباخين ',
-          style: TextStyle(fontSize: 24.sp),
+          style: TextStyle(fontSize: 24.sp, color: Colors.black),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF22A45D),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -33,11 +35,15 @@ class AllChefScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ChefWidget(),
+                ChefWidget(
+                  chefMod: dataChef[0],
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
-                ChefWidget()
+                ChefWidget(
+                  chefMod: dataChef[1],
+                )
               ],
             ),
             SizedBox(
@@ -46,11 +52,15 @@ class AllChefScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ChefWidget(),
+                ChefWidget(
+                  chefMod: dataChef[2],
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
-                ChefWidget()
+                ChefWidget(
+                  chefMod: dataChef[3],
+                )
               ],
             ),
             SizedBox(
@@ -59,11 +69,15 @@ class AllChefScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ChefWidget(),
+                ChefWidget(
+                  chefMod: dataChef[4],
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
-                ChefWidget()
+                ChefWidget(
+                  chefMod: dataChef[5],
+                )
               ],
             ),
             SizedBox(
@@ -72,11 +86,15 @@ class AllChefScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ChefWidget(),
+                ChefWidget(
+                  chefMod: dataChef[6],
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
-                ChefWidget()
+                ChefWidget(
+                  chefMod: dataChef[7],
+                )
               ],
             ),
             SizedBox(
@@ -85,11 +103,15 @@ class AllChefScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ChefWidget(),
+                ChefWidget(
+                  chefMod: dataChef[8],
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
-                ChefWidget()
+                ChefWidget(
+                  chefMod: dataChef[4],
+                )
               ],
             ),
             SizedBox(
@@ -98,25 +120,19 @@ class AllChefScreen extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ChefWidget(),
+                ChefWidget(
+                  chefMod: dataChef[0],
+                ),
                 SizedBox(
                   width: 10.w,
                 ),
-                ChefWidget()
+                ChefWidget(
+                  chefMod: dataChef[2],
+                )
               ],
             ),
             SizedBox(
               height: 15.h,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ChefWidget(),
-                SizedBox(
-                  width: 10.w,
-                ),
-                ChefWidget()
-              ],
             ),
             SizedBox(
               height: 15.h,

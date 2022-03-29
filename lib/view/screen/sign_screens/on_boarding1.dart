@@ -32,7 +32,7 @@ class OnBoarding1 extends StatelessWidget {
               imageUrl: 'assets/image/onbord2.png',
               titile: 'تذوق أشهى أصناف الطعام من سفرتنا',
               describtion:
-                  'أختر سفرتك المفضلة من بين تشكيلة واسعة من الوجبات المطبوخة منزلياً من طهاة محترفين',
+                  'أختر سفرتك المفضلة من بين تشكيلة واسعة من الوجبات  \n               المطبوخة منزلياً من طهاة محترفين',
             ),
             Padding(
               padding: EdgeInsets.only(top: 60.h),

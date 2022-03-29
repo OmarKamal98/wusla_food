@@ -104,10 +104,12 @@ class OnBoardingWidget extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsets.only(top: 5.h, left: 27.w, right: 27.w),
-                      child: Text(
-                        describtion!,
-                        style: TextStyle(
-                            fontSize: 12.sp, fontWeight: FontWeight.bold),
+                      child: Center(
+                        child: Text(
+                          describtion!,
+                          style: TextStyle(
+                              fontSize: 12.sp, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     )
                   ],

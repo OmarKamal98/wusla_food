@@ -32,7 +32,7 @@ class OnBoarding extends StatelessWidget {
               imageUrl: 'assets/image/onbord1.png',
               titile: 'مع سفرتنا اختر وجبتك المفضلة واستمتع مع العائلة',
               describtion:
-                  'سجل بتطبيق سفرتنا واطلب من منزلك أشهى أصناف الطعام معدة من أمهر الطهاة والطباخين',
+                  'سجل بتطبيق سفرتنا واطلب من منزلك أشهى أصناف \n       الطعام معدة من أمهر الطهاة والطباخين',
             ),
             Padding(
               padding: EdgeInsets.only(top: 60.h),

@@ -31,7 +31,7 @@ class OnBoarding2 extends StatelessWidget {
               imageUrl: 'assets/image/onbord2.jfif',
               titile: 'خدمة توصيل سريعة لطلبات الطعام ',
               describtion:
-                  'اطلب وجبتك من مكانك ومن شيفك المفضل، نوفر لك طلبيتك بأسرع وقت ممكن وبأسعار مناسبة',
+                  'اطلب وجبتك من مكانك ومن شيفك المفضل، نوفر لك  \n         طلبيتك بأسرع وقت ممكن وبأسعار مناسبة',
             ),
             Padding(
               padding: EdgeInsets.only(top: 60.h),
