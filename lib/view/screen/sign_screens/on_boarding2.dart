@@ -29,9 +29,9 @@ class OnBoarding2 extends StatelessWidget {
           children: [
             OnBoardingWidget(
               imageUrl: 'assets/image/onbord2.jfif',
-              titile: 'Welcome ',
+              titile: 'خدمة توصيل سريعة لطلبات الطعام ',
               describtion:
-                  'describtionuh ijeiojf jhiuerh oiuheiuorh uehru huoiehru hIUERH UKHERNUEIHFUEHF screeemn 1',
+                  'اطلب وجبتك من مكانك ومن شيفك المفضل، نوفر لك طلبيتك بأسرع وقت ممكن وبأسعار مناسبة',
             ),
             Padding(
               padding: EdgeInsets.only(top: 60.h),

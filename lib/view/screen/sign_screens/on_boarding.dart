@@ -30,9 +30,9 @@ class OnBoarding extends StatelessWidget {
           children: [
             OnBoardingWidget(
               imageUrl: 'assets/image/onbord1.png',
-              titile: 'Welcome ',
+              titile: 'مع سفرتنا اختر وجبتك المفضلة واستمتع مع العائلة',
               describtion:
-                  'describtionuh ijeiojf jhiuerh oiuheiuorh uehru huoiehru hIUERH UKHERNUEIHFUEHF screeemn 1',
+                  'سجل بتطبيق سفرتنا واطلب من منزلك أشهى أصناف الطعام معدة من أمهر الطهاة والطباخين',
             ),
             Padding(
               padding: EdgeInsets.only(top: 60.h),

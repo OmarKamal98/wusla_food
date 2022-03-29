@@ -28,8 +28,8 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'title'.tr(),
-          style: TextStyle(color: Colors.black, fontSize: 24.sp),
+          'سفرتنا',
+          style: TextStyle(color: Color(0xFF22A45D), fontSize: 24.sp),
         ),
         actions: [
           IconButton(

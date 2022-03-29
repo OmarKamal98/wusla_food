@@ -14,6 +14,7 @@ class SignUp extends StatelessWidget {
   final Color facebookColor = const Color(0xff39579A);
   final Color twitterColor = const Color(0xff00ABEA);
   final Color googleColor = const Color(0xffDF4A32);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -39,27 +40,56 @@ class SignUp extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(vertical: 30.h, horizontal: 100.w),
                   child: Text(
-                    'Create Account',
+                    'إنشاء حساب',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 22.sp,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 30.h),
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.normal),
+                Container(
+                  width: 250.w,
+                  height: 40.h,
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 160.w,
+                        height: 40.h,
+                        child: RadioListTile(
+                          value: 0,
+                          groupValue: provider.groupValue,
+                          onChanged: (newValue) => provider.onChangeRadio(0),
+                          title: Text(
+                            'مستخدم',
+                            style: TextStyle(
+                                fontSize: 15.sp, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 120.w,
+                        height: 40.h,
+                        child: RadioListTile(
+                          value: 1,
+                          groupValue: provider.groupValue,
+                          onChanged: (newValue) => provider.onChangeRadio(1),
+                          title: Text(
+                            'طباخ',
+                            style: TextStyle(
+                                fontSize: 15.sp, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+                SizedBox(
+                  height: 25.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: JDInputText(
-                    hintText: 'User Name',
+                    hintText: 'إسم المستخدم',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                     controller: provider.userNameController,
@@ -84,7 +114,7 @@ class SignUp extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: JDInputText(
-                    hintText: 'Email',
+                    hintText: 'البريد الإلكتروني',
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     controller: provider.emailController,
@@ -111,7 +141,7 @@ class SignUp extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: JDInputText(
-                    hintText: 'Phone Number',
+                    hintText: 'رقم الجوال',
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
                     controller: provider.phoneController,
@@ -138,7 +168,7 @@ class SignUp extends StatelessWidget {
                   child: JDInputText(
                     controller: provider.passwordController,
                     obscureText: provider.visiblePass,
-                    hintText: 'Password',
+                    hintText: 'كلمة المرور ',
                     textInputAction: TextInputAction.done,
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (val) {},
@@ -168,8 +198,7 @@ class SignUp extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(right: 20.w),
                   child: CheckboxListTile(
-                    title: const Text(
-                        'I agree to the application terms and policies'),
+                    title: const Text('أوافق علي شروط الإستخدام'),
                     value: provider.checkRegister,
                     onChanged: (newValue) {
                       provider.changeVisibilityCheckBox();
@@ -193,8 +222,7 @@ class SignUp extends StatelessWidget {
                       } else if (regFormkey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text(
-                                'You must agree to the terms and policies'),
+                            content: Text('يجب الموافقة علي شروط الإستخدام'),
                             backgroundColor: Colors.red,
                             behavior: SnackBarBehavior.floating,
                           ),
@@ -211,7 +239,7 @@ class SignUp extends StatelessWidget {
                       }
                     },
                     color: const Color(0xFF22A45D),
-                    label: 'Sign Up',
+                    label: 'انشاء الحساب',
                   ),
                 ),
                 SizedBox(
@@ -228,7 +256,7 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Sign Up With",
+                      "التسجيل بإستخدام",
                       style: TextStyle(color: Colors.blueGrey),
                     ),
                     Expanded(
@@ -261,12 +289,12 @@ class SignUp extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 40.h),
+                  padding: EdgeInsets.only(top: 30.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'have an account ?',
+                        'لدي حساب ؟',
                         style: TextStyle(fontSize: 16.sp),
                       ),
                       TextButton(
@@ -274,7 +302,7 @@ class SignUp extends StatelessWidget {
                             RouterClass.routerClass.pushWidget(LoginScreen());
                           },
                           child: Text(
-                            'Sign In',
+                            'تسجيل الدخول',
                             style: TextStyle(
                                 fontSize: 16.sp, fontWeight: FontWeight.w900),
                           ))

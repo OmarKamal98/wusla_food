@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wusla_food/controller/navigator/router_class.dart';
+import 'package:wusla_food/view/component/button.dart';
+import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
   @override
@@ -22,16 +26,6 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
         LatLng(position.latitude, position.longitude), 20));
   }
 
-  openMapsApp() async {
-    String googleUrl =
-        'https://www.google.com/maps/search/?api=1&query=31.532826649261157,34.45488754659891';
-    if (await canLaunch(googleUrl)) {
-      await launch(googleUrl);
-    } else {
-      throw 'Could not open the map.';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -47,23 +41,50 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
           title: Text('Google Maps'),
           centerTitle: true,
         ),
-        body: GoogleMap(
-          myLocationButtonEnabled: true,
-          zoomControlsEnabled: false,
-          onTap: (LatLng point) {
-            print(point.latitude);
-            print(point.longitude);
-            markers.add(Marker(markerId: MarkerId('gaza'), position: point));
-            setState(() {});
-          },
-          markers: markers,
-          onMapCreated: (GoogleMapController controller) {
-            this.controller = controller;
-          },
-          initialCameraPosition: CameraPosition(
-            target: LatLng(31.416665, 34.333332),
-            zoom: 11.5,
-          ),
+        body: Column(
+          children: [
+            GoogleMap(
+              myLocationButtonEnabled: true,
+              zoomControlsEnabled: false,
+              onTap: (LatLng point) {
+                print(point.latitude);
+                print(point.longitude);
+                markers
+                    .add(Marker(markerId: MarkerId('gaza'), position: point));
+                setState(() {});
+              },
+              markers: markers,
+              onMapCreated: (GoogleMapController controller) {
+                this.controller = controller;
+              },
+              initialCameraPosition: CameraPosition(
+                target: LatLng(31.416665, 34.333332),
+                zoom: 11.5,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: PrimaryButton(
+                color: Color(0xFF22A45D),
+                textcolor: Colors.white,
+                label: 'وصل هنا',
+                widt: 343.w,
+                hieg: 50.h,
+                onTap: () {
+                  if (myLocation != null) {
+                    RouterClass.routerClass
+                        .pushWidgetReplacement(NavigationMain());
+                  } else {
+                    return ScaffoldMessenger.of(context)
+                        .showSnackBar(const SnackBar(
+                      content: Text('يجب تحديد موقعك '),
+                      backgroundColor: Colors.red,
+                    ));
+                  }
+                },
+              ),
+            ),
+          ],
         ));
   }
 }

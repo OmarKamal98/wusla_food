@@ -25,7 +25,7 @@ class SplashScreen extends StatelessWidget {
       User? user = FirebaseAuth.instance.currentUser;
 
       if (user == null) {
-        RouterClass.routerClass.pushWidget(OnBoarding());
+        RouterClass.routerClass.pushWidgetReplacement(OnBoarding());
       } else {
         await Provider.of<AuthProvider>(context, listen: false)
             .getUserFromFirebase();

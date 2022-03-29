@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:wusla_food/view/screen/chats/main_page.dart';
+import 'package:wusla_food/view/screen/check_out.dart';
 import 'package:wusla_food/view/screen/navigate_screen/home_screen.dart';
+import 'package:wusla_food/view/screen/navigate_screen/section.dart';
 import 'package:wusla_food/view/screen/oreder_list.dart';
+
+import 'chef_screen.dart';
 
 class NavigationMain extends StatelessWidget {
   PersistentTabController _controller =
@@ -51,7 +56,7 @@ class NavigationMain extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ('Home'),
+        title: ('الرئيسية'),
         activeColorPrimary: Color(0xFF22A45D),
         inactiveColorPrimary: CupertinoColors.black,
       ),
@@ -62,8 +67,22 @@ class NavigationMain extends StatelessWidget {
         inactiveColorPrimary: CupertinoColors.black,
       ),
       PersistentBottomNavBarItem(
+        icon: SvgPicture.asset(
+          'assets/icons/chefv.svg',
+        ),
+        title: ('الطباخين'),
+        activeColorPrimary: Color(0xFF22A45D),
+        inactiveColorPrimary: CupertinoColors.black,
+      ),
+      PersistentBottomNavBarItem(
         icon: Icon(Icons.shopping_basket_outlined),
         title: ('السلة'),
+        activeColorPrimary: Color(0xFF22A45D),
+        inactiveColorPrimary: CupertinoColors.black,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.person_outline),
+        title: ('ملف شخصي'),
         activeColorPrimary: Color(0xFF22A45D),
         inactiveColorPrimary: CupertinoColors.black,
       ),
@@ -71,6 +90,12 @@ class NavigationMain extends StatelessWidget {
   }
 
   List<Widget> _buildScreens() {
-    return [HomeScreen(), MainPageChat(), EmptyCart()];
+    return [
+      HomeScreen(),
+      Checkout(),
+      MainPageChat(),
+      AllChefScreen(),
+      EmptyCart()
+    ];
   }
 }

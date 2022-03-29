@@ -10,6 +10,7 @@ import 'package:wusla_food/modle/message.dart';
 import 'package:wusla_food/modle/userfirebase.dart';
 import 'package:wusla_food/view/screen/navigate_screen/naviagateion_main.dart';
 import 'package:wusla_food/view/screen/sign_screens/login_screen.dart';
+import 'package:wusla_food/view/screen/sign_screens/map.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthProvider() {
@@ -41,6 +42,12 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  int groupValue = -1;
+  onChangeRadio(int value) {
+    groupValue = value;
+    notifyListeners();
+  }
+
   changeVisibilityCheckBox() {
     checkRegister = !checkRegister;
     notifyListeners();
@@ -61,7 +68,7 @@ class AuthProvider extends ChangeNotifier {
 
       loggedUser = userApp;
 
-      RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
+      RouterClass.routerClass.pushWidgetReplacement(GoogleMapsScreen());
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Register Success'),
@@ -88,7 +95,7 @@ class AuthProvider extends ChangeNotifier {
         getUsers();
       }
       if (loggedUser != null) {
-        RouterClass.routerClass.pushWidgetReplacement(NavigationMain());
+        RouterClass.routerClass.pushWidgetReplacement(GoogleMapsScreen());
         clear();
         notifyListeners();
       } else {
@@ -173,10 +180,13 @@ class AuthProvider extends ChangeNotifier {
         await FirestoreHelper.firestoreHelper.getUsersFromFirestore();
     List<UserApp>? userList =
         queries.map((e) => UserApp.fromMap(e.data())).toList();
-    String myId = FirebaseAuth.instance.currentUser!.uid;
+    if (FirebaseAuth.instance.currentUser != null) {
+      String myId = FirebaseAuth.instance.currentUser!.uid;
 
-    userList.where((element) => element.id == myId).first;
-    userList.removeWhere((element) => element.id == myId);
+      userList.where((element) => element.id == myId).first;
+      userList.removeWhere((element) => element.id == myId);
+    }
+
     users = userList;
     getChats();
     notifyListeners();

@@ -37,14 +37,18 @@ class LoginScreen extends StatelessWidget {
             child: ListView(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 66.h, left: 49.w),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 30.h, horizontal: 100.w),
                   child: Text(
-                    'Sign In',
+                    ' تسجيل الدخول',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.normal),
+                      color: Colors.black,
+                      fontSize: 22.sp,
+                    ),
                   ),
+                ),
+                SizedBox(
+                  height: 30.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -71,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 27.h,
+                  height: 35.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -105,10 +109,17 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 20.h,
+                ),
                 Padding(
                   padding: EdgeInsets.only(right: 220.w),
                   child: TextButton(
-                      onPressed: () {}, child: const Text('Forget PassWord ?')),
+                      onPressed: () {},
+                      child: const Text('نسيت كلمة المرور ؟')),
+                ),
+                SizedBox(
+                  height: 20.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -128,11 +139,11 @@ class LoginScreen extends StatelessWidget {
                     },
                     color: const Color(0xFF22A45D),
                     textcolor: Colors.white,
-                    label: 'Sign In',
+                    label: 'تسجيل الدخول ',
                   ),
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 70.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +156,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Sign In With",
+                      "تسجيل الدخول بإستخدام",
                       style: TextStyle(color: Colors.blueGrey),
                     ),
                     Expanded(
@@ -178,11 +189,12 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 47.h, left: 88.w),
+                  padding: EdgeInsets.only(top: 47.h),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'new in Wusla ?',
+                        'جديد في سفرتنا؟',
                         style: TextStyle(fontSize: 16.sp),
                       ),
                       TextButton(
@@ -190,7 +202,7 @@ class LoginScreen extends StatelessWidget {
                             RouterClass.routerClass.pushWidget(SignUp());
                           },
                           child: Text(
-                            'SignUp',
+                            'إنشاء حساب',
                             style: TextStyle(
                                 fontSize: 16.sp, fontWeight: FontWeight.w900),
                           ))
