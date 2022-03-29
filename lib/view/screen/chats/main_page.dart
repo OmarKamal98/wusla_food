@@ -6,7 +6,7 @@ import 'package:wusla_food/view/screen/chats/all_users_screen.dart';
 
 import 'all_chats_screen.dart';
 
-class MainPage extends StatelessWidget {
+class MainPageChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
