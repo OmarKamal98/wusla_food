@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wusla_food/modle/model_detail_shar.dart';
 
 class MealPreviewWidget extends StatelessWidget {
-  final int index;
-
-  const MealPreviewWidget({Key? key, required this.index}) : super(key: key);
-
+  MealPreviewWidget({Key? key, required this.detailSharqa}) : super(key: key);
+  DetailSharq? detailSharqa;
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -24,19 +23,16 @@ class MealPreviewWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 100.h,
+            height: 98.h,
             width: 160,
             decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(detailSharqa!.imageUrl!),
+                  fit: BoxFit.cover),
               color: Colors.grey,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.r),
                 topRight: Radius.circular(15.r),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                '$index',
-                style: const TextStyle(color: Colors.black),
               ),
             ),
           ),
@@ -46,7 +42,7 @@ class MealPreviewWidget extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'mealName',
+                  detailSharqa!.name!,
                   style:
                       TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                 ),
@@ -60,7 +56,7 @@ class MealPreviewWidget extends StatelessWidget {
             ),
           ),
           Text(
-            'Chafe: Ahmed yousef',
+            'الشيف :' + detailSharqa!.chefName!,
             style: TextStyle(
                 fontSize: 10.sp,
                 color: Colors.grey.shade500,
@@ -74,14 +70,14 @@ class MealPreviewWidget extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(
-                  width: 50.w,
+                  width: 48.w,
                   child: Row(children: [
                     const Icon(
                       Icons.star,
                       color: Color(0xFFFFC529),
                     ),
                     Text(
-                      '4.5',
+                      detailSharqa!.rate!,
                       style: TextStyle(
                           fontSize: 12.sp, fontWeight: FontWeight.w600),
                     ),

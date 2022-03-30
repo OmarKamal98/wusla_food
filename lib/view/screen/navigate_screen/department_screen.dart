@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wusla_food/controller/navigator/router_class.dart';
+import 'package:wusla_food/modle/model_detail_shar.dart';
+import 'package:wusla_food/view/screen/navigate_screen/filter_screen.dart';
 
 import '../../component/department_food_widget.dart';
-
 
 class DepartmentScreen extends StatelessWidget {
   const DepartmentScreen({Key? key}) : super(key: key);
@@ -38,7 +40,7 @@ class DepartmentScreen extends StatelessWidget {
               width: 300.w,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                image: AssetImage('assets/images/west_food.png'),
+                image: AssetImage('assets/image/detailpart.png'),
               )),
             ),
           ),
@@ -67,46 +69,80 @@ class DepartmentScreen extends StatelessWidget {
             ),
             body: Container(
               color: Colors.transparent,
-            child: Column(
-              children: [
-                SizedBox(height: 200.h,),
-                SizedBox(
-                  height: 470.h,
-                  child: ListView(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-                        child: SizedBox(
-                            height: 40.h,
-                            child: Text(
-                              'اكلات شرقية',
-                              style: TextStyle(
-                                  fontSize: 24.sp, fontWeight: FontWeight.w600,color: Colors.black),
-                            )),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-                        child: SizedBox(
-                            height: 40.h,
-                            child: Text(
-                              '90 شيف',
-                              style: TextStyle(
-                                  fontSize: 18.sp, fontWeight: FontWeight.w600,color: Colors.black),
-                            )),
-                      ),
-                      const SubDepartmentWidget(),
-                      const SubDepartmentWidget(),
-                      const SubDepartmentWidget(),
-                      const SubDepartmentWidget(),
-                      const SubDepartmentWidget(),
-                    ],
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 200.h,
                   ),
-                ),
-              ],
-            ),
+                  SizedBox(
+                    height: 470.h,
+                    child: ListView(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15.w, vertical: 8.h),
+                          child: SizedBox(
+                              height: 40.h,
+                              child: Text(
+                                'اكلات شرقية',
+                                style: TextStyle(
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black),
+                              )),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 15.w, vertical: 8.h),
+                              child: SizedBox(
+                                  height: 40.h,
+                                  child: Text(
+                                    '90 شيف',
+                                    style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black),
+                                  )),
+                            ),
+                            Spacer(),
+                            InkWell(
+                              onTap: () {
+                                RouterClass.routerClass
+                                    .pushWidget(FilterScreen());
+                              },
+                              child: Icon(
+                                Icons.filter_list_outlined,
+                                color: Color(0xFF22A45D),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            )
+                          ],
+                        ),
+                        SubDepartmentWidget(
+                          detailSharq: dataShar[0],
+                        ),
+                        SubDepartmentWidget(detailSharq: dataShar[1]),
+                        SubDepartmentWidget(detailSharq: dataShar[2]),
+                        SubDepartmentWidget(detailSharq: dataShar[3]),
+                        SubDepartmentWidget(detailSharq: dataShar[4]),
+                        SubDepartmentWidget(detailSharq: dataShar[5]),
+                        SubDepartmentWidget(detailSharq: dataShar[6]),
+                        SubDepartmentWidget(detailSharq: dataShar[7]),
+                        SubDepartmentWidget(detailSharq: dataShar[8]),
+                        SubDepartmentWidget(detailSharq: dataShar[9]),
+                        SubDepartmentWidget(detailSharq: dataShar[10]),
+                        SubDepartmentWidget(detailSharq: dataShar[11]),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-
         ],
       ),
     );

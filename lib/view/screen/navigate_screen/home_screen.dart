@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wusla_food/controller/navigator/router_class.dart';
+import 'package:wusla_food/modle/chefmodel.dart';
+import 'package:wusla_food/modle/homeeee.dart';
+import 'package:wusla_food/modle/model_detail_shar.dart';
 import 'package:wusla_food/view/component/chafe_widget.dart';
 import 'package:wusla_food/view/component/department_widget.dart';
 import 'package:wusla_food/view/component/meal_perview_widget.dart';
@@ -96,10 +99,9 @@ class HomeScreen extends StatelessWidget {
                 return Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.r),
-                    color: Colors.grey,
-                  ),
-                  child: Center(
-                    child: Text('$index'),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/image/mainhomeoh.png'),
+                        fit: BoxFit.cover),
                   ),
                 );
               },
@@ -120,10 +122,10 @@ class HomeScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 10.h, bottom: 10.h),
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: detailsplite.length,
                 itemBuilder: (context, index) {
                   return DepartmentWidget(
-                    index: index,
+                    detailsplites: detailsplite[index],
                   );
                 }),
           ),
@@ -154,10 +156,10 @@ class HomeScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 15.w),
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: dataShar.length,
                 itemBuilder: (context, index) {
                   return MealPreviewWidget(
-                    index: index,
+                    detailSharqa: dataShar[index],
                   );
                 }),
           ),
@@ -189,10 +191,10 @@ class HomeScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: dataChef.length,
                 itemBuilder: (context, index) {
                   return ChafeWidget(
-                    index: index,
+                    chefMod: dataChef[index],
                   );
                 }),
           ),

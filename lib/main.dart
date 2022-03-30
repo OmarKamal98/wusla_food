@@ -7,6 +7,7 @@ import 'package:wusla_food/controller/provider/app_provider.dart';
 import 'package:wusla_food/controller/provider/auth_provider.dart';
 import 'package:wusla_food/view/screen/chats/main_page.dart';
 import 'package:wusla_food/view/screen/check_out.dart';
+import 'package:wusla_food/view/screen/navigate_screen/department_screen.dart';
 import 'package:wusla_food/view/screen/sign_screens/map.dart';
 import 'package:wusla_food/view/screen/sign_screens/on_boarding.dart';
 import 'package:wusla_food/view/screen/sign_screens/register_screen.dart';

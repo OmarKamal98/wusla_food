@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wusla_food/modle/chefmodel.dart';
 
 class ChafeWidget extends StatelessWidget {
-  final int index;
-  const ChafeWidget({required this.index,Key? key}) : super(key: key);
-
+  ChafeWidget({required this.chefMod, Key? key}) : super(key: key);
+  ChefMod? chefMod;
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -22,12 +22,26 @@ class ChafeWidget extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-           radius: 35.r,
-            backgroundColor: Colors.grey,
-            child: Center(child: Text('$index',style: const TextStyle(color: Colors.black),),),
+              radius: 35.r,
+              backgroundColor: Colors.white,
+              child: ClipOval(
+                child: Image.network(
+                  chefMod!.imageUrl!,
+                  fit: BoxFit.cover,
+                  width: 120.0,
+                  height: 120.0,
+                  // child: Image.network(
+                  //
+                  //   fit: BoxFit.cover,
+                ),
+              )),
+          SizedBox(
+            height: 5.h,
           ),
-          SizedBox(height: 5.h,),
-          Text('Chafe name',style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w600),)
+          Text(
+            chefMod!.name!,
+            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600),
+          )
         ],
       ),
     );
